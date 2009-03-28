@@ -1,11 +1,26 @@
 <canvas title="OpenLaszlo on Rails" proxied="false">
   <script src="../lib/shared.js"/>
+  <include href="../lib/modelcontroller.lzx"/>
+  <include href="../lib/modelgrid.lzx"/>
   <script src="contacts.js"/>
+
+  <dataset name="contactData">
+    <records/>
+  </dataset>
 
   <text>My source code is in app/applets/contacts/contacts.lzx.</text>
 
+  <modelcontroller name="contactController"
+                   maindataset="$once{contactData}"
+                   modelName="contact">
+    <handler name="oninit">
+      this.loadRange(0, 22);						
+    </handler>
+  </modelcontroller>
+
   <window y="30" width="900" height="400" resizable="true">
-    <button onclick="animate('x', 100, 1000, true)">Move Right</button>
-    <button align="right" onclick="animate('x', -100, 1000, true)">Move Left</button>
+    <modelgrid datapath ="contactData:/records"
+               width="100%" height="100%"
+               controller="$once{contactController}"/>
   </window>
 </canvas>
