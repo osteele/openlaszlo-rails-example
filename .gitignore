@@ -2,3 +2,9 @@
 log/*.log
 tmp/**/*
 db/*.sqlite3
+
+# openlaszlo_plugin
+/public/expressInstall.swf
+/public/javascripts/swfobject.js
+/public/applets/
+*.lzx.lzr=*.swf

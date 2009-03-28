@@ -1,0 +1,36 @@
+Description:
+    The applet generator creates an OpenLaszlo application source file and
+    a view that displays it.  If the model and controller do not exist, it
+    creates these as well.
+
+    The generator takes a controller name as its first argument, and the
+    applet name as its second argument.
+    
+    The controller name may be given in CamelCase or under_score and should
+    not be suffixed with 'Controller'.  To create a controller within a
+    module, specify the controller name as 'module/controller'.
+    
+Examples:
+    # Create an applet source directory
+    ./script/generate applet contacts
+
+    This will create:
+        app/applets/contacts/contacts.lzx
+        app/applets/lib/*
+
+    # Also create a controller and view to display the applet
+    ./script/generate applet contacts controller action
+
+    This will also create:
+        app/views/controllers/controller_controller.rb
+        app/views/helpers/controller_helper.rb
+        app/views/views/controller/action.html.erb
+
+Notes:
+    The pathname to the applet does not incorporate the name of
+    the controller.  This accommodates the common case where there are
+    a small number of applets (maybe just one), that communicate with
+    multiple controllers.  It does mean that 'generate applet addresses
+    applet' will overwrite the applet created by 'generate applet contacts
+    applet'.  It is best to generate one applet and then hook it to
+    multiple controllers.

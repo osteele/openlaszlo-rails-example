@@ -1,0 +1,11 @@
+<canvas title="OpenLaszlo on Rails" proxied="false">
+  <script src="../lib/shared.js"/>
+  <script src="<%= js_path %>"/>
+
+  <text>My source code is in <%= path %>.</text>
+
+  <window y="30" width="900" height="400" resizable="true">
+    <button onclick="animate('x', 100, 1000, true)">Move Right</button>
+    <button align="right" onclick="animate('x', -100, 1000, true)">Move Left</button>
+  </window>
+</canvas>
